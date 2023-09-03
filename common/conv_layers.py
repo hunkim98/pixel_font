@@ -23,6 +23,15 @@ class Convolution:
         self.stride = stride
         # pad is the number of pixels that we pad the image with
         self.pad = pad
+
+        # 중간 데이터（backward 시 사용）
+        self.x = None   
+        self.col = None
+        self.col_W = None
+        
+        # 가중치와 편향 매개변수의 기울기
+        self.dW = None
+        self.db = None
     
     def forward(self, x):
         # x is the input data
@@ -44,6 +53,10 @@ class Convolution:
         # we are able to simply calculate the dot product of col and col_W because we have reshaped x to be easily calculated 
         # with our filter weights
         # using im2col, we were able to separate the image data into columns that are the same size as the filter (FH, FW)
+
+        self.x = x
+        self.col = col
+        self.col_W = col_W     
 
         out = np.dot(col, col_W) + self.b
 
@@ -112,3 +125,16 @@ class Pooling:
         self.arg_max = arg_max
 
         return out
+
+    def backward(self, dout):
+        dout = dout.transpose(0, 2, 3, 1)
+        
+        pool_size = self.pool_h * self.pool_w
+        dmax = np.zeros((dout.size, pool_size))
+        dmax[np.arange(self.arg_max.size), self.arg_max.flatten()] = dout.flatten()
+        dmax = dmax.reshape(dout.shape + (pool_size,)) 
+        
+        dcol = dmax.reshape(dmax.shape[0] * dmax.shape[1] * dmax.shape[2], -1)
+        dx = col2im(dcol, self.x.shape, self.pool_h, self.pool_w, self.stride, self.pad)
+        
+        return dx

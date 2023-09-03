@@ -3,8 +3,7 @@ import pickle
 import numpy as np
 
 from common.layers import Affine, Relu, SoftmaxWithLoss
-from common.pooling import Pooling
-from .conv_net import Convolution
+from common.conv_layers import Convolution, Pooling
 # The structure will be as follows:
 # Input -> Conv -> ReLU -> Pooling -> Affine -> ReLU -> Affine -> Softmax -> Output
 # You can have more than one convolutional layer, but for simplicity, we will only use one convolutional layer.
@@ -66,7 +65,7 @@ class SimpleConvNet:
         # the pooling layer is a layer that reduces the size of the image by extracting the most important features from the image
 
         # Initialize weights
-        self.parmas = {}
+        self.params = {}
         # W1 is the weights for the convolutional layer to Relu layer
         self.params["W1"] = weight_init_std * \
                             np.random.randn(filter_num, input_dim[0], filter_size, filter_size)
