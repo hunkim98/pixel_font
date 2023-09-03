@@ -3,6 +3,7 @@ import json
 import numpy as np
 from common.conv_net import SimpleConvNet
 from common.trainer import Trainer
+import matplotlib.pyplot as plt
 
 # Load local emnist mapping json
 
@@ -20,7 +21,7 @@ unique_labels = set(y_train)
 X_train = X_train.reshape(X_train.shape[0], 1, 28, 28)
 X_test = X_test.reshape(X_test.shape[0], 1, 28, 28)
 
-max_epochs = 10
+max_epochs = 20
 
 network = SimpleConvNet(input_dim=(1, 28, 28),
                         conv_param={'filter_num': 30, 'filter_size': 5, 'pad': 0, 'stride': 1},
@@ -35,6 +36,8 @@ trainer.train()
 network.save_params("emnist_params.pkl")
 print("Saved Network Parameters!")
 
+# save the accuracy plot as a png
+
 markers = {'train': 'o', 'test': 's'}
 x = np.arange(max_epochs)
 plt.plot(x, trainer.train_acc_list, marker='o', label='train', markevery=2)
@@ -43,4 +46,7 @@ plt.xlabel("epochs")
 plt.ylabel("accuracy")
 plt.ylim(0, 1.0)
 plt.legend(loc='lower right')
+plt.savefig("emnist_accuracy.png")
 plt.show()
+
+
