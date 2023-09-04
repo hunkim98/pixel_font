@@ -3,7 +3,7 @@
 # This layer is especially used when we need to preserve the spatial relationship of the original data
 # For instance, if we are working with image data, we need to preserve the spatial relationship of the pixels
 import numpy as np
-from common.utils import col2im, im2col
+from .utils import col2im, im2col
 
 
 class Convolution:

@@ -2,8 +2,8 @@ from collections import OrderedDict
 import pickle
 import numpy as np
 
-from common.layers import Affine, Relu, SoftmaxWithLoss
-from common.conv_layers import Convolution, Pooling
+from .layers import Affine, Relu, SoftmaxWithLoss
+from .conv_layers import Convolution, Pooling
 # The structure will be as follows:
 # Input -> Conv -> ReLU -> Pooling -> Affine -> ReLU -> Affine -> Softmax -> Output
 # You can have more than one convolutional layer, but for simplicity, we will only use one convolutional layer.

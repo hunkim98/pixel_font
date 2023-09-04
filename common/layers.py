@@ -1,7 +1,7 @@
 # coding: utf-8
 import numpy as np
-from common.functions import *
-from common.utils import im2col, col2im
+from .functions import *
+from .utils import im2col, col2im
 
 # Relu layer is a layer that applies the relu function to the input
 # Relu is a function that returns 0 if the input is less than 0 and returns the input if the input is greater than 0
