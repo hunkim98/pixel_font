@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 
 interface ProbabilityChartProps {
+  // probabilities is an object with character keys and probability values
   probabilities: Record<string, number>;
 }
 
