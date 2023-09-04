@@ -6,10 +6,9 @@ from typing import List
 import numpy as np
 
 from pydantic import BaseModel
-sys.path.append('../../')
 
 
-from pixel_font.common.conv_net import SimpleConvNet
+from .common.conv_net import SimpleConvNet
 
 
 app = FastAPI()
