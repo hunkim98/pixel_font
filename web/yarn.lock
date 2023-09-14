@@ -1192,10 +1192,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-dotting@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/dotting/-/dotting-2.0.2.tgz#64e1a1bf5be1fc335720c4540ee1aff44db86329"
-  integrity sha512-+QBaVPiIC0KIU+P/NMQ3CJA2H5qH/km0fMlQQfdf5dMS9aHa7ThzZRbXPQPRDPwC9fxmYfheh/mtsuMujEawnQ==
+dotting@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/dotting/-/dotting-2.0.5.tgz#bb67fed06b06b3f48601cc79adca316a6dfc5ab7"
+  integrity sha512-J2Fve0jBANCOEx8au+1mXS+qhu6BQKGGIYQg50g3Z7aNa1gW2SxiqXxdt3x+7KLi2Oeyfg3Ey1RXO+lU8UKteA==
 
 electron-to-chromium@^1.4.477:
   version "1.4.508"
